@@ -1,0 +1,95 @@
+@import '../../app.scss';
+
+.my-node-enter {
+   opacity: 0;
+ }
+ .my-node-enter-active {
+   opacity: 1;
+   transition: opacity 200ms;
+ }
+ .my-node-exit {
+   opacity: 1;
+ }
+ .my-node-exit-active {
+   opacity: 0;
+   transition: opacity 200ms;
+ }
+
+.search {
+   &__wrapper {
+      // position: relative;
+   }
+   &__items {
+      margin-top: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      row-gap: 100px;
+   }
+   &__form {
+      margin-top: 50vh;
+
+   }
+   &__switch {
+      position: absolute;
+      top: 52%;
+      left: 70%;
+      padding: 15px;
+      cursor: pointer;
+      border: 1px solid rgb(62, 137, 133);
+   }
+}
+
+.form {
+
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: space-between;
+   // align-items: center;
+   // margin: 0 auto;
+   text-align: center;
+
+   &__inner {
+   }
+
+   &__label {
+      @include style (1.2rem, 100%, black, 0.01rem)
+   }
+
+   &__input {
+
+      margin-left: 20px;
+
+      width: 300px;
+      height: 70px;
+      border-radius: 33.5px;
+      // border: 2px solid $button_color_dark;
+      outline: none;
+      border: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.2);
+
+      font-size: 20px;
+      padding: 0px 30px;
+      &:focus {
+         width: 700px;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.2);
+         outline: none;
+         border: none;
+      }
+
+      &::placeholder{
+         font-size: 16px;
+         opacity: .6;
+         letter-spacing: 1px;
+         // padding: 0px 15px;
+      }
+   }
+
+   &__button {
+      display: inline;
+      // text-align: center;
+      margin: 0 auto;
+      margin-top: 30px;
+   }
+}

@@ -2,25 +2,42 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { searchFetching, searchFetched, searchFetchingError } from './searchSlice';
+import { searchFetching, searchFetched, searchShowAll, searchFetchingError } from './searchSlice';
 import imdbServiece from '../../services/imdbService';
 
-import Spinner from '../spinner/Spinner';
 import FilmListItem from '../filmListItem/FilmListItem';
-
+import Spinner from '../spinner/Spinner';
+import './appSearch.scss';
 
 
 const AppSearch = () => {
    const dispatch = useDispatch();
 
    const searchStatus = useSelector(state => state.search.searchStatus);
-   const searchItems = useSelector(state => state.search.searchItems);
+   // const searchItems = useSelector(state => state.search.searchItems);
+   const searchItems = useSelector(state => {
+      if (!state.search.searchShowAll) {
+         return state.search.searchItems.slice(0, 3);
+      } else {
+         return state.search.searchItems;
+      }
+   });
 
    const {getSearch} = imdbServiece();
 
-   // useEffect(() => {
-   //    dispatch()
-   // }, [])
+   const marginTopChanger = () => {
+      const form = document.querySelector('.search__form');
+            // switcher = document.querySelector('.search__switch');
+      form.style.marginTop = '7vh';
+      // switcher.style.top = '5%';
+   }
+
+   useEffect(() => {
+      const input = document.querySelector('.form__input');
+      const label = document.querySelector('.form__label');
+      input.addEventListener('click', () => label.style.opacity = 0);
+      input.addEventListener('transitionend', () => (label.style.display = 'none'));
+   }, [])
 
    const onSubmitForm = (event) => {
       event.preventDefault();
@@ -35,11 +52,16 @@ const AppSearch = () => {
    
 
    const getFilm = () => {
-      console.log(`Ты гуглишь ${request}`);
       getSearch(request)
-         .then(dispatch(searchFetching))
+         .then(dispatch(searchFetching()))
          .then(data => dispatch(searchFetched(data)))
-         .catch(dispatch(searchFetchingError))
+         // .catch(dispatch(searchFetchingError()));
+         marginTopChanger();
+   }
+
+   const showAllFilms = () => {
+      console.log('da');
+      dispatch(searchShowAll());
    }
 
    if (searchStatus === "loading") {
@@ -66,29 +88,33 @@ const AppSearch = () => {
    const elements = renderFilms(searchItems);
 
    return (
-      <>
-         <form className="" onSubmit={onSubmitForm}>
-               <div className="">
-                  <label htmlFor="name" className="">Введите запрос</label>
-                  <input 
-                     required
-                     type="text" 
-                     name="search" 
-                     className="" 
-                     id="search" 
-                     placeholder="Как меня зовут?"
-                     value={request}
-                     onChange={onChangeHandler}
-                     />
-               </div>
-               <button type="submit" className="" onClick={getFilm}>Найти</button>
-         </form>
-         <ul>
+      <div className='search'>
+         <div className="search__wrapper">
+            <form className="search__form form" onSubmit={onSubmitForm}>
+                  <div className="form__inner">
+                     <label htmlFor="name" className="form__label">Писать сюда:</label>
+                     <input 
+                        required
+                        type="text" 
+                        name="search" 
+                        className="form__input" 
+                        id="search" 
+                        placeholder="введите..."
+                        value={request}
+                        onChange={onChangeHandler}
+                        />
+                  </div>
+                  <button type="submit" className="form__button btn btn_white" onClick={getFilm}>Найти</button>
+            </form>
+            <div className='search__switch' onClick={showAllFilms}>Показывать все</div>
+         </div>
+
+         <ul className='search__items'>
             <TransitionGroup component={null}>
                   {elements}
             </TransitionGroup>
          </ul>
-      </>
+      </div>
    )
 
 }

@@ -1,11 +1,10 @@
-import { createEntityAdapter, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
-
-const searchAdapter = createEntityAdapter;
 
 const initialState = {
    searchItems: [],
    searchStatus: 'idle',
+   searchShowAll: false,
 };
 
 const searchSlice = createSlice({
@@ -16,6 +15,10 @@ const searchSlice = createSlice({
       searchFetched: (state, action) => {
          state.searchStatus = 'idle';
          state.searchItems = action.payload;
+
+      },
+      searchShowAll: state => {
+         state.searchShowAll = !state.searchShowAll;
       },
       searchFetchingError: state => {
          state.searchStatus = 'error';
@@ -37,5 +40,6 @@ export default reducer;
 export const {
    searchFetching,
    searchFetched,
+   searchShowAll,
    searchFetchingError
 } = actions;

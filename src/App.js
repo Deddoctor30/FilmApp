@@ -2,12 +2,14 @@ import React from 'react';
 import AppSearch from './components/appSearch/AppSearch';
 // import logo from './logo.svg';
 // import { Counter } from './features/counter/Counter';
-// import './App.css';
+import './app.scss';
 
 function App() {
   return (
-    <main className='app'>
+    <main className='wrapper'>
+      <div className="container">
         <AppSearch/>
+      </div>
     </main>
   );
 }
