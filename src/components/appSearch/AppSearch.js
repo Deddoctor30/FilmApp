@@ -6,7 +6,8 @@ import { searchFetching, searchFetched, searchShowAll, searchFetchingError } fro
 import imdbServiece from '../../services/imdbService';
 
 import FilmListItem from '../filmListItem/FilmListItem';
-import Spinner from '../spinner/Spinner';
+// import Spinner from '../spinner/Spinner';
+import Skeleton from '../skeleton/Skeleton';
 import './appSearch.scss';
 
 
@@ -16,20 +17,17 @@ const AppSearch = () => {
    const searchStatus = useSelector(state => state.search.searchStatus);
    // const searchItems = useSelector(state => state.search.searchItems);
    const searchItems = useSelector(state => {
-      if (!state.search.searchShowAll) {
-         return state.search.searchItems.slice(0, 3);
-      } else {
+      if (!state.search.searchShowAll) {return state.search.searchItems.slice(0, 3)}
          return state.search.searchItems;
-      }
    });
 
    const {getSearch} = imdbServiece();
 
    const marginTopChanger = () => {
-      const form = document.querySelector('.search__form');
-            // switcher = document.querySelector('.search__switch');
+      const form = document.querySelector('.search__form'),
+            switcher = document.querySelector('.search__switch');
       form.style.marginTop = '7vh';
-      // switcher.style.top = '5%';
+      switcher.style.top = '5%';
    }
 
    useEffect(() => {
@@ -56,19 +54,16 @@ const AppSearch = () => {
          .then(dispatch(searchFetching()))
          .then(data => dispatch(searchFetched(data)))
          // .catch(dispatch(searchFetchingError()));
-         marginTopChanger();
+         if (searchStatus === 'idle') {
+            marginTopChanger();
+         }
    }
 
    const showAllFilms = () => {
-      console.log('da');
       dispatch(searchShowAll());
    }
 
-   if (searchStatus === "loading") {
-        return <Spinner/>;
-   } else if (searchStatus === "error") {
-        return <h5 className="text-center mt-5">Ошибка загрузки</h5>
-   }
+
 
 
    const renderFilms = (arr) => {
@@ -85,7 +80,16 @@ const AppSearch = () => {
       })
    }
 
-   const elements = renderFilms(searchItems);
+   let elements = '';
+   // const elements = renderFilms(searchItems);
+
+   if (searchStatus === "loading") {
+      elements = <Skeleton/>;
+   } else if (searchStatus === "error") {
+      elements = <h5 className="text-center mt-5">Ошибка загрузки</h5>
+   } else {
+      elements = renderFilms(searchItems);
+   }
 
    return (
       <div className='search'>
