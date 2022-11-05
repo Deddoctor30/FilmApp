@@ -1,7 +1,7 @@
 
 .skeleton {
-   width: 100%;
-   margin-top: 80px;
+   width: 90vw;
+   // margin-top: 80px;
    display: flex;
    justify-content: space-between;
    // justify-items: center;
@@ -15,8 +15,8 @@
    }
 
    &__img {
-      width: 200px;
-      height: 300px;
+      width: 330px;
+      height: 480px;
       background-color: #C4C4C4;
       img {
          width: 100%;
@@ -29,14 +29,14 @@
    }
 
    &__title {
-      width: 200px;
-      height: 50px;
+      width: 250px;
+      height: 35px;
       background-color: #C4C4C4;
    }
 
    &__description {
-      width: 200px;
-      height: 120px;
+      width: 250px;
+      height: 60px;
       background-color: #C4C4C4;
    }
 }

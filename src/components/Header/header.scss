@@ -1,0 +1,30 @@
+@import '../../app.scss';
+
+.search {
+   &__header {
+
+   }
+}
+
+.header {
+   margin: 50px 0px;
+   // text-align: center;
+   // margin: 0 auto;
+   // height: 100%;
+   // width: 100%;
+   &__menu {
+      ul {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         // &>*:not(:last-child){
+         //    margin: 0px 20px 0px 0px;
+         // }
+         li {
+            margin: 0px 20px;
+            cursor: pointer;
+         }
+      }
+   }
+}
+

@@ -5,6 +5,7 @@ const initialState = {
    searchItems: [],
    searchStatus: 'idle',
    searchShowAll: false,
+   searchRequest: '',
 };
 
 const searchSlice = createSlice({
@@ -17,11 +18,14 @@ const searchSlice = createSlice({
          state.searchItems = action.payload;
 
       },
-      searchShowAll: state => {
+      searchShow: state => {
          state.searchShowAll = !state.searchShowAll;
       },
       searchFetchingError: state => {
          state.searchStatus = 'error';
+      },
+      searchSetRequest: (state, action) => {
+         state.searchRequest = action.payload;
       }
    },
    // extraReducers: (builder) => {
@@ -40,6 +44,7 @@ export default reducer;
 export const {
    searchFetching,
    searchFetched,
-   searchShowAll,
-   searchFetchingError
+   searchShow,
+   searchFetchingError,
+   searchSetRequest,
 } = actions;

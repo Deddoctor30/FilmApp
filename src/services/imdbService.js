@@ -5,17 +5,21 @@ const ImdbService = () => {
    const {request} = useHttp();
 
    // https://imdb-api.com/API/Search/k_ja7liwom/thor
+   // https://imdb-api.com/ru/API/SearchName/k_ja7liwom/Jean Reno
 
-   const _apiBase = 'https://imdb-api.com/API/Search';
+   const _apiBase = 'https://imdb-api.com/API';
    const _apiKey = 'k_ja7liwom';
-   // const _baseOffset = 210;
-   // const _comics = 'https://gateway.marvel.com:443/v1/public/comics?';
 
 
    const getSearch = async (search) => {
-      const res = await request(`${_apiBase}/${_apiKey}/${search}`);
+      const res = await request(`${_apiBase}/Search/${_apiKey}/${search}`);
       return res.results.map(_transformSearch);
-      console.log(`${_apiBase}/${_apiKey}/${search}`);
+   }
+
+
+   const getSearchActor = async (search) => {
+      const res = await request(`${_apiBase}/SearchName/${_apiKey}/${search}`);
+      return res.results.map(_transformSearch);
    }
 
 
@@ -88,6 +92,7 @@ const ImdbService = () => {
 
    return {
       getSearch,
+      getSearchActor,
       // getAllCharacters, 
       // getCharacter, 
       // clearError, 
