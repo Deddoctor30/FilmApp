@@ -1,0 +1,17 @@
+@import '/src/app.scss';
+
+.search {
+   width: 90vw;
+
+   &__actors {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    row-gap: 100px;
+  }
+
+   &__wrapper {
+   }
+}

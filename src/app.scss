@@ -104,7 +104,7 @@ $modal_bg_color: #FFFFFF;
 
 .btn {
    // Фиксированные размеры
-   width: 180px;
+   width: 200px;
    height: 50px;
    min-width: 150px;
    display: flex;
@@ -156,63 +156,6 @@ $modal_bg_color: #FFFFFF;
       }
    }
 }
-
-
-// .buttons {
-//    margin: 30px 0px 0px 840px;
-//    @media (max-width: 1150px) {
-//       margin: 0 auto;
-//       margin-top: 30px;
-//    }
-// }
-
-
-// _________________Стилизация кнопок в бургене___________
-
-// .border-button {
-//    display: inline-block;
-//    position: relative;
-//    border: 1px solid $font_color_dark;
-//    padding: 20px 30px;
-   
-//  }
-//  .border-button:before, .border-button:after {
-//    content: "";
-//    position: absolute;
-//    width: 0;
-//    height: 0;
-//    opacity: 0;
-//    box-sizing: border-box;
-//  }
-//  .border-button:before {
-//    bottom: 0;
-//    left: 0;
-//    border-left: 1px solid $font_color_dark;
-//    border-top: 1px solid $font_color_dark;
-//    transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
-//  }
-//  .border-button:after {
-//    top: 0;
-//    right: 0;
-//    border-right: 1px solid $font_color_dark;
-//    border-bottom: 1px solid $font_color_dark;
-//    transition: 0s ease opacity .4s, .2s ease width, .2s ease height .2s;
-//  }
-//  .border-button:hover:before, 
-//  .border-button:hover:after {
-//    height: 100%;
-//    width: 100%;
-//    opacity: 1;
-//  }
-//  .border-button:hover:before {
-//    transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
-//  }
-//  .border-button:hover:after {
-//    transition: 0s ease opacity .4s, .2s ease height .4s, .2s ease width .6s;
-//  }
-//  .border-button:hover {
-//    background: rgba(255, 255, 255, .2);
-//  }
 
 // __________________________Тело_____________________________________
 

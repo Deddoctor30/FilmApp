@@ -14,9 +14,8 @@ const searchSlice = createSlice({
    reducers: {
       searchFetching: state => { state.searchStatus = 'loading' },
       searchFetched: (state, action) => {
-         state.searchStatus = 'idle';
          state.searchItems = action.payload;
-
+         state.searchStatus = 'idle';
       },
       searchShow: state => {
          state.searchShowAll = !state.searchShowAll;

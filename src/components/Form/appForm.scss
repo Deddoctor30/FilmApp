@@ -1,37 +1,9 @@
 @import '../../app.scss';
 
-.my-node-enter {
-   opacity: 0;
- }
- .my-node-enter-active {
-   opacity: 1;
-   transition: opacity 200ms;
- }
- .my-node-exit {
-   opacity: 1;
- }
- .my-node-exit-active {
-   opacity: 0;
-   transition: opacity 200ms;
- }
-
 .search {
-   width: 90vw;
-
-   &__wrapper {
-   }
-
    &__form {
       margin-top: 20%;
-   }
-   &__switch {
-      position: absolute;
-      top: 38%;
-      left: 80%;
-      padding: 0 5px;
-
-      cursor: pointer;
-      border: 1px solid rgb(62, 137, 133);
+      // margin-top: 5%;
    }
 }
 
