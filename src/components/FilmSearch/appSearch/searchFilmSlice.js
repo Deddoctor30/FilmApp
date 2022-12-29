@@ -27,6 +27,13 @@ const searchSlice = createSlice({
          state.searchRequest = action.payload;
       }
    },
+   // extraReducers: (builder) => {
+   //    builder
+   //       .addCase(fetchFilters.fulfilled, (state, action) => {
+   //          // state.filters = action.payload;
+   //          filtersAdapter.setAll(state, action.payload);
+   //       })
+   // }
 })
 
 const {actions, reducer} = searchSlice;

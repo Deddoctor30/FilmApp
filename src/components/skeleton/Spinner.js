@@ -1,12 +1,12 @@
-import './skeletonItem.scss';
+import './spinner.scss';
 
-const SkeletonItem = () => {
+const Spinner = () => {
    return (
       <div className="spinner">
          <div className="spinner__item">
             <div className="pulse spinner__img"></div>
             <div className="spinner__inner">
-               <div className="pulse spinner__title"></div>
+               <h1 className="pulse spinner__title"></h1>
                <div className='spinner__description'>
                   <div className="pulse spinner__description-one"></div>
                   <div className="pulse spinner__description-two"></div>
@@ -20,4 +20,4 @@ const SkeletonItem = () => {
    )
 }
 
-export default SkeletonItem;
+export default Spinner;

@@ -17,7 +17,7 @@ const AppActor = () => {
                <AppForm method={'getSearchActor'}/>
             </div>
             <ul className='search__actors actors'>
-               <ActorList/>
+                  <ActorList/>
             </ul>
          </div>
       </>

@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-// import { filmFetching, filmFetched } from '../../SingleFilm/SingleFilm';
+import { filmFetching, filmFetched } from '../../SingleFilm/FilmItemSlice';
 import ImdbService from '../../../services/imdbService';
 
 import './filmListItem.scss';
@@ -12,6 +12,10 @@ const FilmListItem = ({thumbnail, title, description, id}) => {
    const {getSearchMovieInfo} = ImdbService();
 
    const filmLoader = () => {
+      // getSearchMovieInfo(id)
+      // .then(dispatch(filmFetching()))
+      // .then(data => dispatch(filmFetched(data)))
+      // .then(navigate(`/film/${id}`))
       navigate(`/film/${id}`);
    }
 

@@ -4,32 +4,33 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
 import ActorListItem from '../actorListItem/ActorListItem';
-import Skeleton from '../../skeletonList/SkeletonList';
+import Skeleton from '../../skeleton/Skeleton';
 import './actorList.scss';
 
 
 const ActorList = () => {
 
    const actorStatus = useSelector(state => state.actor.actorStatus);
-   const actorItems = useSelector(state => state.actor.actorItems);
+   const actorItems = useSelector(state =>  state.actor.actorItems);
 
    const renderFilms = (arr) => {
-      return arr.map(({ ...props }) => {
+      return arr.map(({id, ...props}) => {
          return (
             <CSSTransition
-               key={props.id}
-               timeout={500}
-               classNames="my-node">
-               <ActorListItem {...props} />
+            key={id}
+            timeout={500}
+            classNames="my-node">
+                <ActorListItem {...props}/>
+                {/* <FilmListItem {...props} onDelete={() => deleteHero(id)}/> */}
             </CSSTransition>
          )
       })
    }
 
    let elements = '';
-
+       
    if (actorStatus === "loading") {
-      return <Skeleton />;
+      return <Skeleton/>;
    } else if (actorStatus === "error") {
       return <h5 className="text-center mt-5">Ошибка загрузки</h5>
    } else if (actorStatus === "idle") {
@@ -38,7 +39,7 @@ const ActorList = () => {
 
    return (
       <TransitionGroup component={null}>
-         {elements}
+            {elements}
       </TransitionGroup>
    )
 

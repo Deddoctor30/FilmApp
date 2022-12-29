@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { searchFetching, searchFetched, searchSetRequest } from '../FilmSearch/appSearch/searchFilmSlice';
-import { actorFetching, actorFetched, actorSetRequest } from '../ActorSearch/appActor/searchActorSlice';
+import { searchFetching, searchFetched, searchShow, searchFetchingError, searchSetRequest } from '../FilmSearch/appSearch/searchFilmSlice';
+import { actorFetching, actorFetched, actorFetchingError, actorSetRequest } from '../ActorSearch/appActor/searchActorSlice';
 import imdbServiece from '../../services/imdbService';
 
+// import '../appSearch/appSearch.scss';
 import './appForm.scss';
+import { useMemo } from 'react';
 
 const AppForm = (method) => {
    const dispatch = useDispatch();
@@ -48,6 +50,7 @@ const AppForm = (method) => {
    
 
    const getSearchMethod = () => {
+      // setSearchSwitcher(searchSwitcher => !searchSwitcher);
       if (method.method === 'getSearch') {
          getSearch(searchRequest)
          .then(dispatch(searchFetching()))
