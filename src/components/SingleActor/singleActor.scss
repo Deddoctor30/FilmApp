@@ -1,7 +1,6 @@
 .actor {
    font-size: 16px;
    display: grid;
-   // justify-items: end;
    grid-template-columns: 300px 2fr 1fr;
    grid-template-rows: repeat(auto-fit, minmax(350px, 1fr));
    column-gap: 40px;
@@ -33,14 +32,15 @@
          margin-bottom: 10px;
       }
    }
-
    &__cast {
    }
 }
 
 .info {
    &__title {
-
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 30px;
    }
 }
 

@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { searchFetching, searchFetched, searchShow, searchFetchingError } from './searchFilmSlice';
+import { searchShow } from './searchFilmSlice';
 
 
 import Header from '../../Header/Header';
 import AppForm from '../../form/AppForm';
 import FilmList from '../filmList/FilmList';
 import './appSearch.scss';
-import { useRef } from 'react';
 
 
 const AppSearch = () => {
@@ -29,8 +28,6 @@ const AppSearch = () => {
          }
          console.log('appSearch_Effect');
    }, [searchShowAll]);
-
-   console.log('appSearch_node');
 
    return (
       <>

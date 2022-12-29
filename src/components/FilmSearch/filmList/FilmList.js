@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
 import FilmListItem from '../filmListItem/FilmListItem';
-import Skeleton from '../../skeleton/Skeleton';
+import Skeleton from '../../skeletonList/SkeletonList';
 import './filmList.scss';
 
 
