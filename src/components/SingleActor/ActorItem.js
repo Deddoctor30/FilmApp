@@ -1,29 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { singleActorFetched, singleActorDisFetched, singleActorFetchingError } from './ActorItemSlice';
+import { singleActorDisFetched, fetchActor } from './ActorItemSlice';
 import { useParams } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
-import ImdbService from '../../services/imdbService';
 import Header from '../Header/Header';
 import Skeleton from '../skeleton/Skeleton';
 
 import './actorItem.scss';
 import { useState } from 'react';
+// import SkeletonItem from '../skeletonItem/SkeletonItem';
 
 const ActorItem = () => {
   const params = useParams();                         // Просто получаем id страницы
   const dispatch = useDispatch();
-  const {getSearchActorInfo} = ImdbService();
   const singleActorStatus = useSelector(state => state.singleActor.singleActorStatus);
   const navigate = useNavigate();
   const [castType, setCastType] = useState('Producer');
   const [castShowAll, setCastShowAll] = useState(false);
-  // const [castCount, setCastCount] = useState(null);
 
   const count = 6;
   const singleActorItem = useSelector(state => {
     if (singleActorStatus === 'idle') {
-      // setCastCount(state.singleActor.singleActorItem.castMovies.length);
       if (state.singleActor.singleActorItem.castMovies.length > count) {
         let newCastList = null;
         if (!castShowAll) {
@@ -37,8 +34,6 @@ const ActorItem = () => {
       }
     }
   });
-  
-  console.log('actor_node');
   
   const actor = {
       "id": "nm0634240",
@@ -1524,16 +1519,15 @@ const ActorItem = () => {
   }
 
   useEffect(() => {
-      dispatch(singleActorFetched(actor))
+      // dispatch(singleActorFetched(actor))
       // getSearchActorInfo(params.id)
       // .then(data => dispatch(singleActorFetched(data)));
-      console.log('actor_Effect');
+      
+      dispatch(fetchActor(params.id))
       return () => {
            dispatch(singleActorDisFetched())
         }
   }, [])
-
-  // console.log(castType);
 
   return (
     <>
@@ -1545,7 +1539,7 @@ const ActorItem = () => {
       <div className="actor">
         <img src={singleActorItem.image} alt={singleActorItem.name}/>
         <div className="actor__info info">
-          <h1 className="info__title"></h1>
+          <h1 className="info__title">{singleActorItem.name}</h1>
           <div>
             <div>Роль:</div>
             <div>{singleActorItem.role}</div>
@@ -1614,7 +1608,6 @@ const ActorItem = () => {
           })}</div>
           {!castShowAll &&
             <button 
-              // disabled={castCount < count ? true : false} 
               className='cast__btn' 
               onClick={() => setCastShowAll(true)}
               >

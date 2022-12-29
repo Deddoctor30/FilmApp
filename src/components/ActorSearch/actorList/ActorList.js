@@ -14,10 +14,10 @@ const ActorList = () => {
    const actorItems = useSelector(state =>  state.actor.actorItems);
 
    const renderFilms = (arr) => {
-      return arr.map(({id, ...props}) => {
+      return arr.map(({...props}) => {
          return (
             <CSSTransition
-            key={id}
+            key={props.id}
             timeout={500}
             classNames="my-node">
                 <ActorListItem {...props}/>
