@@ -13,7 +13,7 @@ const Header = () => {
       <header className="search__header header">
          <nav className="header__menu">
             <ul>
-               <li><NavLink style={({isActive}) => isActive ? activePage : undefined} to='/'>Главная</NavLink></li>
+               <li><NavLink style={({isActive}) => isActive ? activePage : undefined} to='/'>Фильмы</NavLink></li>
                /
                <li><NavLink style={({isActive}) => isActive ? activePage : undefined} to='/actor'>Актеры</NavLink></li>
             </ul>

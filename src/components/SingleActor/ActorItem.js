@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { singleActorDisFetched, fetchActor } from './ActorItemSlice';
+import { singleActorDisFetched, fetchActor, singleActorFetched } from './ActorItemSlice';
 import { useParams } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
@@ -1519,14 +1519,14 @@ const ActorItem = () => {
   }
 
   useEffect(() => {
-      // dispatch(singleActorFetched(actor))
+      dispatch(singleActorFetched(actor))
       // getSearchActorInfo(params.id)
       // .then(data => dispatch(singleActorFetched(data)));
       
-      dispatch(fetchActor(params.id))
-      return () => {
-           dispatch(singleActorDisFetched())
-        }
+      // dispatch(fetchActor(params.id))
+      // return () => {
+      //      dispatch(singleActorDisFetched())
+      //   }
   }, [])
 
   return (
@@ -1599,7 +1599,7 @@ const ActorItem = () => {
 
           <div className='cast__items'>{singleActorItem.castMovies.map((item, i) => {
             return (
-              <div className='cast__item' key={i}>
+              <div className='cast__item' key={i} onClick={() => navigate(`/film/${item.id}`)}>
                     <div>{item.title} {item.year}</div>
                     <div>{item.description}</div>
                     <div>{item.role}</div>

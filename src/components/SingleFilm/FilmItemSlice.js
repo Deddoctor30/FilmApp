@@ -19,6 +19,10 @@ const filmSlice = createSlice({
    name: 'film', 
    initialState,
    reducers: {
+      filmFetched: (state, action) => {
+         state.filmItem = action.payload;
+         state.filmStatus = 'idle';
+      },
       filmDisFetched: (state) => {
          state.filmItem = [];
          state.filmStatus = 'loading';

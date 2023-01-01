@@ -23,6 +23,10 @@ const singleActorSlice = createSlice({
    name: 'singleActor', 
    initialState,
    reducers: {
+      singleActorFetched: (state, action) => {
+         state.singleActorItem = action.payload;
+         state.singleActorStatus = 'idle';
+      },
       singleActorDisFetched: (state) => {
          state.singleActorItem = [];
          state.singleActorStatus = 'loading';
