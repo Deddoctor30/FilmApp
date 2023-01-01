@@ -6,6 +6,7 @@ const initialState = {
    singleActorItem: [],
    singleActorStatus: 'loading',
    singleActorRequest: '',
+   // singleActorCast: [],
 };
 
 export const fetchActor = createAsyncThunk(             //AsyncThunk для асинхронных запросов (работа с API вынес в него)
@@ -15,9 +16,6 @@ export const fetchActor = createAsyncThunk(             //AsyncThunk для ас
       return await getSearchActorInfo(id)
    }
 );
-
-
-
 
 const singleActorSlice = createSlice({
    name: 'singleActor', 

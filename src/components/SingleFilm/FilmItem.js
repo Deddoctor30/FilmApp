@@ -256,7 +256,7 @@ const FilmItem = () => {
   // const filmItem = useSelector(state => state.film.filmStatus);
   const filmItem = useSelector(state => {
     if (filmStatus === 'idle') {
-      if (state.film.filmItem.actorList.length > 16) {
+      if (state.film.filmItem.actorList && state.film.filmItem.actorList.length > 16) {
         const newActorsList = state.film.filmItem.actorList.slice(0, 16)
         return { ...state.film.filmItem, actorList: newActorsList }
       } else {
@@ -280,14 +280,14 @@ const FilmItem = () => {
     // adaptiveHeight: true,
     // centerPadding: '100px',
   }
-  console.log('New node');
+  console.log('effect');
 
   useEffect(() => {
+    console.log('effect');
     // dispatch(filmFetched(item))            // для верстки
 
     // getSearchMovieInfo(params.id)                  // работу с API вынес в Async Thunk
     // .then(data => dispatch(filmFetched(data)));
-    console.log('useEffect');
     dispatch(fetchFilm(params.id));                   // Async Thunk
     return () => {
       dispatch(filmDisFetched())
@@ -302,6 +302,13 @@ const FilmItem = () => {
         <Spinner/>
         :
         <>
+          {filmItem.fullTitle === null 
+          ?
+          <>
+          <h1 style={{margin: 50, textAlign: 'center', fontSize: 36, fontWeight: 700}}>Контент находится в разработке</h1>
+          <Spinner/>
+          </>
+          :
           <div className='film'>
             <img className='film__img' src={filmItem.image} alt={filmItem.fullTitle} />
             <div className="film__info info">
@@ -396,8 +403,10 @@ const FilmItem = () => {
               </Slider>
             </div>
           </div>
+        }
         </>
       }
+      
     </>
   )
 }
