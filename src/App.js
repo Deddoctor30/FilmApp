@@ -1,18 +1,12 @@
 import React from 'react';
-// import AppSearch from './components/FilmSearch/appSearch/AppSearch';
-// import AppActor from './components/ActorSearch/appActor/AppActor';
-
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"; 
 import { lazy, Suspense } from "react";
-// import FilmItem from './components/SingleFilm/FilmItem';
-// import FilmItem from './components/FilmSearch/appFilm/FilmItem';
 import './app.scss';
-import Skeleton from './components/skeleton/Skeleton';
-import ActorItem from './components/SingleActor/ActorItem';
 
-const AppSearch = lazy(() => import('./components/FilmSearch/appSearch/AppSearch'));                 // Ленивая загрузка
+const AppSearch = lazy(() => import('./components/FilmSearch/appSearch/AppSearch'));
 const AppActor = lazy(() => import('./components/ActorSearch/appActor/AppActor'));
-const FilmItem = lazy(() => import('./components/SingleFilm/FilmItem'));
+const FilmItem = lazy(() => import('./components/FilmItem/FilmItem'));
+const ActorItem = lazy(() => import('./components/ActorItem/ActorItem'))
 
 function App() {
   return (

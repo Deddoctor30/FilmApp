@@ -6,7 +6,6 @@ const initialState = {
    singleActorItem: [],
    singleActorStatus: 'loading',
    singleActorRequest: '',
-   // singleActorCast: [],
 };
 
 export const fetchActor = createAsyncThunk(             //AsyncThunk для асинхронных запросов (работа с API вынес в него)

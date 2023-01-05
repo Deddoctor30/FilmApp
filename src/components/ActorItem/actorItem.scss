@@ -1,7 +1,7 @@
+@import '../../app.scss';
 .actor {
    font-size: 16px;
    display: grid;
-   // justify-items: end;
    grid-template-columns: 300px 2fr 1fr;
    grid-template-rows: repeat(auto-fit, minmax(350px, 1fr));
    column-gap: 40px;
@@ -23,12 +23,10 @@
    }
 
    &__right-bar {
-
    }
 
    &__known-for {
-      font-size: 14px;
-      line-height: 160%;
+      @include style (0.77rem, 160%, inherit, inherit);
       &>:first-child {
          font-size: 16px;
          margin-bottom: 10px;

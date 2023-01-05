@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 
@@ -21,7 +20,6 @@ const ActorList = () => {
             timeout={500}
             classNames="my-node">
                 <ActorListItem {...props}/>
-                {/* <FilmListItem {...props} onDelete={() => deleteHero(id)}/> */}
             </CSSTransition>
          )
       })

@@ -7,7 +7,7 @@ const initialState = {
    filmRequest: '',
 };
 
-export const fetchFilm = createAsyncThunk(             //AsyncThunk для асинхронных запросов (работа с API вынес в него)
+export const fetchFilm = createAsyncThunk(             //AsyncThunk для асинхронных запросов (работу с API вынес в него)
    'singleFilm/fetchFilm',
    async (id) => {
       const {getSearchMovieInfo} = ImdbService();

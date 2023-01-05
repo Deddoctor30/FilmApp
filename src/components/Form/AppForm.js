@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { searchFetching, searchFetched, searchShow, searchFetchingError, searchSetRequest } from '../FilmSearch/appSearch/searchFilmSlice';
-import { actorFetching, actorFetched, actorFetchingError, actorSetRequest } from '../ActorSearch/appActor/searchActorSlice';
+import { searchFetching, searchFetched, searchSetRequest } from '../FilmSearch/appSearch/searchFilmSlice';
+import { actorFetching, actorFetched, actorSetRequest } from '../ActorSearch/appActor/searchActorSlice';
 import imdbServiece from '../../services/imdbService';
 
-// import '../appSearch/appSearch.scss';
 import './appForm.scss';
-import { useMemo } from 'react';
 
 const AppForm = (method) => {
    const dispatch = useDispatch();
-
    const searchRequest = useSelector(state => state.search.searchRequest);
    const actorRequest = useSelector(state => state.actor.actorRequest);
+   const ref = useRef()
 
 
    const formRequest = () => {
@@ -27,15 +25,13 @@ const AppForm = (method) => {
    const {getSearch, getSearchActor} = imdbServiece();
 
 
-   useEffect(() => {
-      const input = document.querySelector('.form__input');
-      const label = document.querySelector('.form__label');
-      input.addEventListener('click', () => label.style.opacity = 0);
-      input.addEventListener('transitionend', () => (label.style.display = 'none'));
-   }, [])
-
    const onSubmitForm = (event) => {
       event.preventDefault();
+   }
+
+   const handlerClick = () => {
+      ref.current.style.width = 0;
+      ref.current.style.opacity = 0;
    }
 
    const onChangeHandler = event => {
@@ -50,26 +46,25 @@ const AppForm = (method) => {
    
 
    const getSearchMethod = () => {
-      // setSearchSwitcher(searchSwitcher => !searchSwitcher);
       if (method.method === 'getSearch') {
          getSearch(searchRequest)
          .then(dispatch(searchFetching()))
          .then(data => dispatch(searchFetched(data)))
-         // .catch(dispatch(searchFetchingError()));
       } else if (method.method === 'getSearchActor') {
          getSearchActor(actorRequest)
          .then(dispatch(actorFetching()))
          .then(data => dispatch(actorFetched(data)))
-         // .catch(dispatch(actorFetchingError()));
       }
    }
+   // rer.current.style.width = 0
 
    return (
       <>
          <form className="search__form form" onSubmit={onSubmitForm}>
                <div className="form__inner">
-                  <label htmlFor="name" className="form__label">Писать сюда:</label>
+                  <div ref={ref} className="form__wrapper"><label htmlFor="name" className="form__label">Писать сюда:</label></div>
                   <input 
+                     onClick={() => handlerClick()}
                      required
                      type="text" 
                      name="search" 

@@ -1,4 +1,4 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
@@ -26,14 +26,7 @@ const searchSlice = createSlice({
       searchSetRequest: (state, action) => {
          state.searchRequest = action.payload;
       }
-   },
-   // extraReducers: (builder) => {
-   //    builder
-   //       .addCase(fetchFilters.fulfilled, (state, action) => {
-   //          // state.filters = action.payload;
-   //          filtersAdapter.setAll(state, action.payload);
-   //       })
-   // }
+   }
 })
 
 const {actions, reducer} = searchSlice;

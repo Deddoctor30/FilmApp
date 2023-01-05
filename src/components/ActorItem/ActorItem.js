@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { singleActorDisFetched, fetchActor, singleActorFetched } from './ActorItemSlice';
+import { singleActorDisFetched, fetchActor } from './ActorItemSlice';
 import { useParams } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
@@ -8,18 +8,14 @@ import Skeleton from '../skeleton/Skeleton';
 
 import './actorItem.scss';
 import { useState } from 'react';
-import { current } from '@reduxjs/toolkit';
 import MySelect from '../UI/select/MySelect';
 
-// import SkeletonItem from '../skeletonItem/SkeletonItem';
-
 const ActorItem = () => {
-  const params = useParams();                         // Просто получаем id страницы
+  const params = useParams();
   const dispatch = useDispatch();
   const singleActorStatus = useSelector(state => state.singleActor.singleActorStatus);
   const navigate = useNavigate();
   const [castType, setCastType] = useState('Producer');
-  const [castItems, setCastItems] = useState('');
   const [castShowAll, setCastShowAll] = useState(false);
 
   const count = 6;
@@ -2529,6 +2525,7 @@ const ActorItem = () => {
         }
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

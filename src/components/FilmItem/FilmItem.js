@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filmDisFetched, fetchFilm, filmFetched } from './FilmItemSlice';
+import { filmDisFetched, fetchFilm } from './FilmItemSlice';
 import { useParams } from "react-router-dom"
 import { useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
@@ -246,7 +246,6 @@ const item = {
   "errorMessage": ""
 }
 
-
 const FilmItem = () => {
   const params = useParams();                         // Просто получаем id страницы
   const dispatch = useDispatch();
@@ -275,15 +274,16 @@ const FilmItem = () => {
   }
 
   useEffect(() => {
-    dispatch(filmFetched(item))            // для верстки
+    // dispatch(filmFetched(item))            // для верстки
 
 
-    // dispatch(fetchFilm(params.id));                   // Async Thunk
-    // return () => {
-    //   dispatch(filmDisFetched())
-    // }
+    dispatch(fetchFilm(params.id));                   // Async Thunk
+    return () => {
+      dispatch(filmDisFetched())
+    }
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
   return (

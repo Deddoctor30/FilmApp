@@ -3,7 +3,6 @@
 .search {
    &__form {
       margin-top: 20%;
-      // margin-top: 5%;
    }
 }
 
@@ -13,12 +12,20 @@
    &__inner {
    }
 
+   &__wrapper {
+      display: inline-block;
+      width: 140px;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-right: 20px;
+   }
+
    &__label {
-      @include style (1.2rem, 100%, black, 0.01rem)
+      @include style (1.2rem, 100%, black, 0.01rem);
    }
 
    &__input {
-      margin-left: 22px;
+      // margin-left: 22px;
       width: 300px;
       height: 70px;
       border-radius: 33.5px;
