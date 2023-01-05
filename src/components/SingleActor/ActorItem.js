@@ -25,7 +25,7 @@ const ActorItem = () => {
   const count = 6;
   const singleActorItem = useSelector(state => {
     if (singleActorStatus === 'idle') {
-      if (state.singleActor.singleActorItem.castMovies && state.singleActor.singleActorItem.castMovies.length > count) {
+      if (state.singleActor.singleActorItem.castMovies?.length > count) {
         let newCastList = null;
         if (!castShowAll) {
           newCastList = state.singleActor.singleActorItem.castMovies.filter(item => item.role === castType).slice(0, count);
@@ -2518,27 +2518,17 @@ const ActorItem = () => {
     "errorMessage": ""
   }
 
-  // const cast = () => {
-  //   if (singleActorStatus === 'idle') {
-  //     setCastItems(castItemsDefault.reduce((result, item) => {
-  //       return result.includes(item.role) ? result : [...result, item.role]
-  //     }, []))
-  //   }
-  // }
-
-  console.log('effect');
 
   useEffect(() => {
       // dispatch(singleActorFetched(actor));
-      console.log('effect');
-      // cast();
-      // getSearchActorInfo(params.id)
-      // .then(data => dispatch(singleActorFetched(data)));
+
       
       dispatch(fetchActor(params.id))
       return () => {
            dispatch(singleActorDisFetched())
         }
+
+
   }, [])
 
   return (
@@ -2557,7 +2547,6 @@ const ActorItem = () => {
       </>
       :
       <div className="actor">
-        {/* {console.log(castItems)} */}
         <img src={singleActorItem.image} alt={singleActorItem.name}/>
         <div className="actor__info info">
           <h1 className="info__title">{singleActorItem.name}</h1>
@@ -2606,18 +2595,6 @@ const ActorItem = () => {
         <div className="actor__cast cast">
           <label className='cast__title' htmlFor="role">Каст:</label>
 
-
-
-          {/* const cast = () => {
-    if (singleActorStatus === 'idle') {
-      setCastItems(castItemsDefault.reduce((result, item) => {
-        return result.includes(item.role) ? result : [...result, item.role]
-      }, []))
-    }
-  } */}
-
-
-
           <MySelect
             value={castType} 
             onChange={value => setCastType(value)} 
@@ -2626,21 +2603,6 @@ const ActorItem = () => {
               return result.includes(item.role) ? result : [...result, item.role]
             }, [])}
           />
-          {/* <select onChange={e => setCastType(e.target.value)} name="role" id="role">
-            <option value="Producer">Продюсер</option>
-            <option value="Writer">Сценарист</option>
-            <option value="Director">Режесер</option>
-            <option value="Cinematographer">Оператор</option>
-            <option value="Editor">Монтажер</option>
-            <option value="Art department">Художник постановщик</option>
-            <option value="Composer">Композитор</option>
-            <option value="Thanks">Благодарность</option>
-            <option value="Thanks">Актер: играет самого себя</option>
-            <option value="Archive footage">Архивные кадры</option>
-          </select> */}
-
-
-
           <div className='cast__items'>{singleActorItem.castMovies.map((item, i) => {
             return (
               <div className='cast__item' key={i} onClick={() => navigate(`/film/${item.id}`)}>
@@ -2663,10 +2625,7 @@ const ActorItem = () => {
       </div>
       }
       </>
-
     }
-    
-
     </>
 
   )
