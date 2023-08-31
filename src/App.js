@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"; 
 import { lazy, Suspense } from "react";
+import './styles/_global.scss';
 import './app.scss';
 
 const AppSearch = lazy(() => import('./components/FilmSearch/appSearch/AppSearch'));

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-
 import './actorListItem.scss';
 
 const ActorListItem = ({thumbnail, title, description, id}) => {

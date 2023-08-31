@@ -8,10 +8,6 @@
 
 .form {
    text-align: center;
-
-   &__inner {
-   }
-
    &__wrapper {
       display: inline-block;
       width: 140px;
@@ -19,20 +15,16 @@
       white-space: nowrap;
       margin-right: 20px;
    }
-
    &__label {
       @include style (1.2rem, 100%, black, 0.01rem);
    }
-
    &__input {
-      // margin-left: 22px;
       width: 300px;
       height: 70px;
       border-radius: 33.5px;
       outline: none;
       border: none;
       box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.2);
-
       font-size: 20px;
       padding: 0px 30px;
       &:focus {
@@ -41,14 +33,12 @@
          outline: none;
          border: none;
       }
-
       &::placeholder{
          font-size: 18px;
          opacity: .6;
          letter-spacing: 2px;
       }
    }
-
    &__button {
       display: inline;
       margin: 0 auto;

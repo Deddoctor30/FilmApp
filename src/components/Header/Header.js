@@ -3,12 +3,10 @@ import { NavLink } from 'react-router-dom';
 import './header.scss';
 
 const Header = () => {
-
    const activePage = {
       fontSize: "22px",
       color: "#534aa9",
    }
-
    return (
       <header className="search__header header">
          <nav className="header__menu">

@@ -1,20 +1,14 @@
-
 .search {
    &__item {
       cursor: pointer;
    }
 }
-
 .item {
    display: flex;
    flex: 0 1 32%;
-
-
    &__img {
       width: 100%;
       max-width: 330px;
-
-      // height: 100%;
       padding: 0px 0px 90% 0px;
       overflow: hidden;
       text-align: center;
@@ -29,18 +23,12 @@
          left: 0;
       }
    }
-
    &__inner {
       margin-left: 15px;
       flex: 0 1 auto
    }
-
    &__title {
       font-size: 26px;
       margin-bottom: 20px;
-   }
-
-   &__description {
-      
    }
 }

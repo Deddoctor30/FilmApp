@@ -1,14 +1,10 @@
 import { useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
-
 import FilmListItem from '../filmListItem/FilmListItem';
 import Skeleton from '../../skeleton/Skeleton';
 import './filmList.scss';
 
-
 const FilmList = () => {
-
    const searchStatus = useSelector(state => state.search.searchStatus);
    const searchItems = useSelector(state => {
       if (!state.search.searchShowAll) {return state.search.searchItems.slice(0, 6)}
@@ -28,9 +24,7 @@ const FilmList = () => {
          )
       })
    }
-
    let elements = '';
-       
    if (searchStatus === "loading") {
       return <Skeleton/>;
    } else if (searchStatus === "error") {
@@ -44,7 +38,6 @@ const FilmList = () => {
             {elements}
       </TransitionGroup>
    )
-
 }
 
 export default FilmList;

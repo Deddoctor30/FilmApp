@@ -1,10 +1,8 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { searchFetching, searchFetched, searchSetRequest } from '../FilmSearch/appSearch/searchFilmSlice';
 import { actorFetching, actorFetched, actorSetRequest } from '../ActorSearch/appActor/searchActorSlice';
 import imdbServiece from '../../services/imdbService';
-
 import './appForm.scss';
 
 const AppForm = (method) => {
@@ -12,8 +10,6 @@ const AppForm = (method) => {
    const searchRequest = useSelector(state => state.search.searchRequest);
    const actorRequest = useSelector(state => state.actor.actorRequest);
    const ref = useRef()
-
-
    const formRequest = () => {
       if (method.method === 'getSearch') {
          return searchRequest
@@ -21,19 +17,14 @@ const AppForm = (method) => {
          return actorRequest
       }
    }
-
    const {getSearch, getSearchActor} = imdbServiece();
-
-
    const onSubmitForm = (event) => {
       event.preventDefault();
    }
-
    const handlerClick = () => {
       ref.current.style.width = 0;
       ref.current.style.opacity = 0;
    }
-
    const onChangeHandler = event => {
       const {value} = event.target;
       if (method.method === 'getSearch') {
@@ -41,10 +32,7 @@ const AppForm = (method) => {
       } else if (method.method === 'getSearchActor') {
          dispatch(actorSetRequest(value));
       }
-      
    }
-   
-
    const getSearchMethod = () => {
       if (method.method === 'getSearch') {
          getSearch(searchRequest)
@@ -56,26 +44,25 @@ const AppForm = (method) => {
          .then(data => dispatch(actorFetched(data)))
       }
    }
-   // rer.current.style.width = 0
 
    return (
       <>
          <form className="search__form form" onSubmit={onSubmitForm}>
-               <div className="form__inner">
-                  <div ref={ref} className="form__wrapper"><label htmlFor="name" className="form__label">Писать сюда:</label></div>
-                  <input 
-                     onClick={() => handlerClick()}
-                     required
-                     type="text" 
-                     name="search" 
-                     className="form__input" 
-                     id="search" 
-                     placeholder="введите..."
-                     value={formRequest()}
-                     onChange={onChangeHandler}
-                     />
-               </div>
-               <button className="form__button btn btn_white" type="submit" onClick={getSearchMethod}>Найти</button>
+            <div className="form__inner">
+               <div ref={ref} className="form__wrapper"><label htmlFor="name" className="form__label">Писать сюда:</label></div>
+               <input 
+                  onClick={() => handlerClick()}
+                  required
+                  type="text" 
+                  name="search" 
+                  className="form__input" 
+                  id="search" 
+                  placeholder="введите..."
+                  value={formRequest()}
+                  onChange={onChangeHandler}
+                  />
+            </div>
+            <button className="form__button btn btn_white" type="submit" onClick={getSearchMethod}>Найти</button>
          </form>
       </>
    )

@@ -1,9 +1,8 @@
 @import '/src/app.scss';
-
+@import '/src/styles/global.scss';
 
 .search {
    width: 90vw;
-
    &__items {
     margin-top: 150px;
     display: flex;
@@ -12,16 +11,11 @@
     gap: 20px;
     row-gap: 100px;
   }
-
-   &__wrapper {
-   }
-
    &__switch {
       position: absolute;
       top: 320px;
       right: 50px;
       padding: 0 5px;
-
       cursor: pointer;
       border: 1px solid rgb(62, 137, 133);
    }

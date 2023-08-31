@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
    searchItems: [],
    searchStatus: 'idle',
@@ -28,11 +27,8 @@ const searchSlice = createSlice({
       }
    }
 })
-
 const {actions, reducer} = searchSlice;
-
 export default reducer;
-
 export const {
    searchFetching,
    searchFetched,

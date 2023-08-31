@@ -1,20 +1,13 @@
 
 .spinner {
-   // margin-top: 118px;
    width: 90vw;
-   // margin-top: 80px;
    display: flex;
    justify-content: space-between;
-   // justify-items: center;
-   // align-items: center;
    gap: 30px;
-   // row-gap: 100px;
-
    &__item {
       display: flex;
       flex: 0 1 32%;
    }
-
    &__img {
       width: 400px;
       height: 580px;
@@ -24,17 +17,14 @@
          height: 100%;
       }
    }
-
    &__inner {
       margin-left: 30px;
    }
-
    &__title {
       width: 300px;
       height: 40px;
       background-color: #C4C4C4;
    }
-
    &__description {
       display: flex;
    }
@@ -56,7 +46,6 @@
       height: 90px;
       background-color: #C4C4C4;
    }
-
    &__second-item {
       margin-right: 200px;
       width: 220px;

@@ -1,0 +1,8 @@
+@import './variables.scss';
+
+@mixin style($fz, $lh, $c, $lsp) {
+   font-size: $fz;
+   line-height: $lh;
+   color: $c;
+   letter-spacing: $lsp;
+}

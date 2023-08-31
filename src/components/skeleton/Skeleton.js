@@ -25,7 +25,6 @@ const Skeleton = () => {
             </div>
          </div>
       </div>
-
    )
 }
 

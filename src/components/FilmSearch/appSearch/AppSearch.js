@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { searchShow } from './searchFilmSlice';
-
-
 import Header from '../../Header/Header';
 import AppForm from '../../Form/AppForm';
 import FilmList from '../filmList/FilmList';
@@ -36,7 +33,6 @@ const AppSearch = () => {
                <AppForm method={'getSearch'}/>
                <div style={showSwitcher.length ? {visibility: 'visible'} : {visibility: 'hidden'}} className='search__switch btn btn_white' onClick={showAllFilms}>{swithContent}</div>
             </div>
-
             <ul className='search__items'>
                <FilmList/>
             </ul>

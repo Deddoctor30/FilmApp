@@ -1,7 +1,6 @@
 const MySelect = ({options, defaultValue, value, onChange}) => {
   return (
    <select 
-      // value={value}
       onChange={event => onChange(event.target.value)}
       name="select" 
       id="1"

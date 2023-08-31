@@ -1,10 +1,8 @@
 import { useNavigate } from 'react-router-dom'
-
 import './filmListItem.scss';
 
 const FilmListItem = ({thumbnail, title, description, id}) => {
    const navigate = useNavigate()
-
    const filmLoader = () => {
       navigate(`/film/${id}`);
    }

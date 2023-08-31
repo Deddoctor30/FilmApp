@@ -7,7 +7,7 @@ const initialState = {
    filmRequest: '',
 };
 
-export const fetchFilm = createAsyncThunk(             //AsyncThunk для асинхронных запросов (работу с API вынес в него)
+export const fetchFilm = createAsyncThunk(
    'singleFilm/fetchFilm',
    async (id) => {
       const {getSearchMovieInfo} = ImdbService();
@@ -30,7 +30,7 @@ const filmSlice = createSlice({
    },
    extraReducers: (builder) => {
       builder
-         .addCase(fetchFilm.pending, (state) => {      // pending - загрузка, fulfield - загрузилось, reject...
+         .addCase(fetchFilm.pending, (state) => {
             state.filmStatus = 'loading'
          })
          .addCase(fetchFilm.fulfilled, (state, action) => {
@@ -40,7 +40,7 @@ const filmSlice = createSlice({
          .addCase(fetchFilm.rejected, (state) => {
             state.filmStatus = 'error';
          })
-         .addDefaultCase(() => {})              // дефолтная функция
+         .addDefaultCase(() => {})
    }
 })
 

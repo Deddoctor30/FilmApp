@@ -7,7 +7,6 @@
    column-gap: 40px;
    row-gap: 100px;
    text-align: left;
-
    img {
       width: 300px;
    }
@@ -21,10 +20,6 @@
          color: gray;
       }
    }
-
-   &__right-bar {
-   }
-
    &__known-for {
       @include style (0.77rem, 160%, inherit, inherit);
       &>:first-child {
@@ -32,28 +27,22 @@
          margin-bottom: 10px;
       }
    }
-
-   &__cast {
+   &__error {
+      margin: 50px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
    }
 }
-
-.info {
-   &__title {
-
-   }
-}
-
 .cast {
    grid-column: span 3;
    margin-bottom: 80px;
    display: flex;
    flex-direction: column;
-
    &__title {
       font-weight: 700;
       line-height: 200%;
    }
-
    select {
       margin-bottom: 30px;
       height: 40px;
@@ -62,12 +51,7 @@
       border: 1px solid gray;
       padding: 8px;
    }
-
-   &__items {
-   }
-
    &__item {
-      // display: flex;
       cursor: pointer;
       padding: 20px 15px;
       line-height: 140%;
